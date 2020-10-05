@@ -1,0 +1,20 @@
+{
+  "name": "Orinoco",
+  "version": "1.0.0",
+  "description": "Conception du site e-commerce Orinoco.",
+  "main": "index.js",
+  "scripts": {
+    "watch": "node-sass -o css scss/main.scss -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackwonka/Orinoco.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jackwonka/Orinoco/issues"
+  },
+  "homepage": "https://github.com/jackwonka/Orinoco#readme"
+}
