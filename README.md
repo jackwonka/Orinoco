@@ -73,8 +73,9 @@ Vous devrez avoir Node et npm installés localement sur votre machine.
 
 *** Installation ***
 
-Clonez ce dépôt. À partir du dossier du projet, exécutez npm install. 
-Vous pouvez ensuite exécuter le serveur avec le serveur de noeud. 
-Le serveur doit fonctionner sur l'hôte local avec le port par défaut 3000. 
-Si le serveur s'exécute sur un autre port pour une raison quelconque, cela est imprimé 
-sur la console lorsque le serveur démarre, par exemple Listening sur le port 3001.
+Clonez ce dépôt. 
+À partir du dossier du projet, exécutez npm install. 
+Vous pouvez ensuite exécuter le serveur avec node server. 
+Le serveur doit fonctionner localhostavec le port par défaut 3000. 
+Si le serveur fonctionne sur un autre port pour une raison quelconque, 
+cela est imprimé sur la console au démarrage du serveur, par exemple Listening on port 3001.

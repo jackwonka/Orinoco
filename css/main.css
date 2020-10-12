@@ -1,2 +1,79 @@
-body {
-  background-color: #205ba7; }
+@charset "UTF-8";
+@font-face {
+  font-family: 'segoepr';
+  src: url("../fonts/segoepr.eot"), url("../fonts/segoepr.woff"), url("../fonts/segoepr.ttf"), url("../fonts/segoepr.svg"); }
+
+/*:::::::::::::::::::::::::::::::::::::::: Page index ::::::::::::::::::::::::::::::::::::::::*/
+/*---------- Corps ----------*/
+* {
+  font-family: 'segoepr';
+  margin: 0;
+  padding: 0; }
+
+/*---------- En-tête ----------*/
+header {
+  display: flex;
+  justify-content: space-around;
+  padding: 3%;
+  background-color: #f3e9f1; }
+  header img {
+    border-radius: 8px; }
+  header nav {
+    margin-top: 50px; }
+    header nav .icon {
+      display: flex;
+      list-style-type: none;
+      font-size: 25px; }
+      header nav .icon__description {
+        display: flex;
+        padding: 0 15px 0 15px; }
+        header nav .icon__description i {
+          margin-left: 10px; }
+
+/*---------- Contenu principal ----------*/
+main {
+  background: linear-gradient(to bottom right, #ca7b4dd2, #915cf3ce); }
+  main h1, main p, main h2 {
+    padding: 20px;
+    display: flex;
+    justify-content: center; }
+
+/*---------- Articles ----------*/
+.item {
+  display: flex;
+  width: 55rem;
+  flex-wrap: wrap;
+  margin: auto;
+  padding: 40px 0 40px 0; }
+
+.box {
+  background-color: #f3e9f1;
+  height: 400px;
+  width: 400px;
+  margin: 20px;
+  border-radius: 5px;
+  list-style-type: none;
+  box-shadow: 0px 0px 12px 2px #c4c5c5; }
+  .box .details {
+    font-size: 12px;
+    margin-left: 5px; }
+
+a {
+  text-decoration: none; }
+
+/*---------- Pied de page ----------*/
+footer {
+  padding: 3%;
+  background-color: #f3e9f1; }
+
+.cartForm {
+  width: 60%;
+  margin: 20px auto 0 auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #915cf3ce;
+  color: #ffffff;
+  box-shadow: 0px 0px 12px 2px #c4c5c5;
+  border-radius: 10px; }
+
+/*:::::::::::::::::::::::::::::::::::::::: End page index ::::::::::::::::::::::::::::::::::::::::*/
