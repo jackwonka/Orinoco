@@ -1,12 +1,8 @@
 @charset "UTF-8";
-@font-face {
-  font-family: 'segoepr';
-  src: url("../fonts/segoepr.eot"), url("../fonts/segoepr.woff"), url("../fonts/segoepr.ttf"), url("../fonts/segoepr.svg"); }
-
 /*:::::::::::::::::::::::::::::::::::::::: Page index ::::::::::::::::::::::::::::::::::::::::*/
 /*---------- Corps ----------*/
 * {
-  font-family: 'segoepr';
+  font-family: 'karmaGeorgia, serif, sans-serif';
   margin: 0;
   padding: 0; }
 
@@ -32,7 +28,7 @@ header {
 
 /*---------- Contenu principal ----------*/
 main {
-  background: linear-gradient(to bottom right, #ca7b4dd2, #915cf3ce); }
+  background: linear-gradient(to bottom right, #ca7b4dd2, #915cf3ce, #5c78f3ce); }
   main h1, main p, main h2 {
     padding: 20px;
     display: flex;
@@ -40,21 +36,19 @@ main {
 
 /*---------- Articles ----------*/
 #bear {
-  display: flex;
-  width: 55rem;
-  flex-wrap: wrap;
+  width: 70%;
   margin: auto;
-  padding: 40px 0 40px 0;
-  background-color: royalblue; }
+  padding: 40px 0 40px 0; }
 
 .item {
-  background-color: #f3e9f1;
-  height: 400px;
-  width: 400px;
-  margin: 20px;
+  background-color: #dac6ffce;
   border-radius: 5px;
-  list-style-type: none;
-  box-shadow: 0px 0px 12px 2px #c4c5c5; }
+  box-shadow: 0px 0px 12px 2px #c4c5c5;
+  list-style: none;
+  margin: 100px; }
+  .item .row {
+    display: flex;
+    justify-content: center; }
 
 a {
   text-decoration: none; }
