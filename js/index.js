@@ -1,14 +1,11 @@
-//////////  Récupération des données ours en peluches avec l'API fetch, fonctionne avec les promesses.
+//////////  Récupération des données ours en peluches avec l'API fetch.
 
 fetch('http://localhost:3000/api/teddies')
   .then((response) => response.json())
   .then((response) => {
   
     console.log(response);
-  
-    // Afficher nos produits
-    // console.log(response[0].name)
-    
+
     //Je créer ma variable que je vais ajouter à mes elements
     let html = "";
 
@@ -19,24 +16,17 @@ fetch('http://localhost:3000/api/teddies')
       //Html pur , Créer les élément, clone prototype
       html += `<li class="item">
       <h2 class="row">${response[i].name}</h2>
-      <img src="${response[i].imageUrl}" alt="Images ours" style= "width:70%; border-radius: 5px; margin-left: 16%;">
+      <img src="${response[i].imageUrl}" alt="Images ours" style= "width:40%; border-radius:5px; margin-left:16%;">
       <p class="row">${response[i].description}</p>
       <p class="row">${(response[i].price/100).toFixed(2).replace(".",",")}€</p>
-      <a class="row" href="./produit.html?${response[i]._id}" style= "color: black;"><b>Voir l'article</b></a></li>`
+      <a class="row" href="./produit.html?${response[i]._id}" style= "color:black;"><b>Voir l'article</b></a></li>`
     }
+    
+     // Ajouter mes element créer dans le HTML pour afficher mes produits
+    document.getElementById("bear").innerHTML = html
+})
 
-    console.log(html);
-
-    // Ajouter mes element créer dans le HTML
-    document.getElementById("bear").innerHTML = html;
-
-  
-  })
-
-  // function avec message d'erreur du serveur HS
-  .catch(function(err){
-    console.log(err);
-    if(err === 0){ // requete annulée
-        alert("serveur HS");
-    }
+// Message d'erreur
+.catch(e => {
+  errorMessage();
 });

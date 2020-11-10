@@ -4,106 +4,87 @@
 /*---------- Corps ----------*/
 
 * {
-    font-family: 'karmaGeorgia, serif, sans-serif';
-    margin: 0;
-    padding: 0;
+  font-family: 'karmaGeorgia, serif, sans-serif';
+  margin: 0;
+  padding: 0;
 }
 
-/*---------- En-tête ----------*/
-
 header {
-    display: flex;
-    justify-content: space-around;
-    padding: 3%;
-    background-color: #f3e9f1;
-        img {
-            border-radius: 8px;
-        }
-        nav {
-            margin-top: 50px;
-            .icon {
+  display: flex;
+  justify-content: space-around;
+  padding: 3%;
+  background-color: #f3e9f1;
+    img {
+        border-radius: 8px;
+    }
+      nav {
+        margin-top: 50px;
+          .icon {
+            display: flex;
+            list-style-type: none;
+            font-size: 25px;
+              &__description {
                 display: flex;
-                list-style-type: none;
-                font-size: 25px;
-                    &__description {
-                        display: flex;
-                        padding: 0 15px 0 15px;
-                            i {
-                                margin-left: 10px;
+                padding: 0 15px 0 15px;
+                  i {
+                    margin-left: 10px;
                 }
             }
         }
     }
 }
-
 /*---------- Contenu principal ----------*/
 
 main {
-    background: linear-gradient(to bottom right, #ca7b4dd2,#915cf3ce,#5c78f3ce);
-        h1, p, h2 {
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
+  background: linear-gradient(to bottom right, #ca7b4dd2,#915cf3ce,#5c78f3ce);
+      h1, p, h2 {
+          padding: 20px;
+          display: flex;
+          justify-content: center;
+      }
 }
+
 /*---------- Articles ----------*/
 
 #bear {
-    width: 70%;
-    margin: auto;
-    padding: 40px 0 40px 0;
+  width: 70%;
+  margin: auto;
+  padding: 40px 0 40px 0;
+  .item {
+      background-color: #dac6ffce;
+      border-radius: 5px;
+      box-shadow: 0px 0px 12px 2px #c4c5c5;
+      list-style: none;
+      margin: 100px;
+          .row {
+              display: flex;
+              justify-content: center;
+      }
+  }
 }
-.item {
-    background-color: #dac6ffce;
-    border-radius: 5px;
-    box-shadow: 0px 0px 12px 2px #c4c5c5;
-    list-style: none;
-    margin: 100px;
-        .row {
-            display: flex;
-            justify-content: center;
-        }
-}
-
-a {
-    text-decoration: none;
-}
-
 /*---------- Pied de page ----------*/ 
 
 footer {
-    width: 94%;
-    display: flex;
-    justify-content: space-around;
-    padding: 3%;
-    background-color: #f3e9f1;
-        a {
-            color: black;
-    }  
+  
+  display: flex;
+  justify-content: space-around;
+  padding: 3%;
+  background-color: #f3e9f1;
+  width: 100%;
+  height: auto;
+      a {
+          color: black;
+  }  
 }
 
-/*:::::::::::::::::::::::::::::::::::::::: Page panier ::::::::::::::::::::::::::::::::::::::::*/
-/*---------- Formulaire ---------- */
+#item__details {
+  width: 70%;
+  margin: auto;
+  padding: 40px 0 40px 0;
+  background-color: #dac6ffce;
+  border-radius: 5px;
+  box-shadow: 0px 0px 12px 2px #c4c5c5;
+}
 
-.info {
-    padding-bottom: 150px;
-}
-.form {
-    width: 40%;
-    margin: 20px auto 0 auto;
-    padding-bottom: 80px;
-    text-align: center;
-    background: linear-gradient(to top right, #ca7b4dd2,#915cf3ce);
-    color: #ffffff;
-    box-shadow: 0px 0px 12px 2px #c4c5c5;
-    border-radius: 10px;
-    
-}
-#btn {
-    padding: 20px;
-}
-/*:::::::::::::::::::::::::::::::::::::::: Page confirmation ::::::::::::::::::::::::::::::::::::::::*/
 
-.content {
-    padding: 15%;
-}
+
