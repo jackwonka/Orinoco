@@ -1,29 +1,29 @@
-let cart = document.querySelector(".cart");
+// Appel ma function du nombre d'article dans mon panier
+itemConfirmation()
 
-itemConfirmation();
-
-// Affiche le nombre d'articles dans le panier.
+// function qui affiche le nombre d'articles dans le panier.
 function itemConfirmation() {
     
     div = document.querySelector(".item__number")
-    let nb = 0;
+    let nomber = 0;
 
-    if (localStorage.getItem('cartProducts') !== null) {
-        let cp = JSON.parse(localStorage.getItem("cartProducts"));
+    if (sessionStorage.getItem('anyItem') !== null) {
         
-        cp.forEach((prod) => {
-            nb = nb + prod.quantity;
+        let keyNomber = JSON.parse(sessionStorage.getItem('anyItem'));
+        
+        keyNomber.forEach((prod) => {
+            nomber = nomber + prod.quantity;
         });
-    } 
-    div.textContent = nb;
-    console.log("produit ajouter")
+    }
+    div.textContent = nomber;
+    console.log("test ajout")
 }
 
-//  Message d'erreur si pas de connexion au serveur
+//  function de message d'erreur si pas de connexion au serveur
 function errorMessage() {
-    const section = document.querySelector(".error");
+
+    let html = "";
    
-    section.insertAdjacentHTML("beforeend", `
-        <p class="section__error">Suite à un problème technique nous ne pouvons afficher correctement la page. </br> Rééssayer plus tard.</p>
-    `);
+    html += `<p class="section__error">Nous ne parvenons pas à vous connecter, vérifiez votre réseau et reessayer"</p>`
+    document.querySelector(".error").innerHTML = html;
 }

@@ -45,14 +45,11 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
 
     })
 })
-    .catch(e => {
-        errorMessage();
-        console.log(e);
-    });
-
-
-// Si localStorage est vide elle crée un nouveau tableau cartItem et l'enregistre dans le localStorage
-// Sinon elle récupère le tableau du localStorage, ajoute le nouveau produit, et enregistre le nouveau tableau
+// Message d'erreur
+.catch(e => {
+    errorMessage();
+    console.log(e);
+});
 
 // Function ajout des articles au panier.
 function addItemCart (item) {
@@ -70,12 +67,14 @@ function addItemCart (item) {
         selectColors: item.selectColors
     }
     let otherItem = true;
-
-    if (localStorage.getItem('cartProducts') === null) {
+    // Si sessionStorage est vide elle crée un nouveau tableau cartItem et l'enregistre dans le sessionStorage
+    if (sessionStorage.getItem('anyItem') === null) {
         cartItem.push(saveItemCart);
-        localStorage.setItem('cartProducts', JSON.stringify(cartItem));
-    } else { 
-        cartItem = JSON.parse(localStorage.getItem('cartProducts'));
+        sessionStorage.setItem('anyItem', JSON.stringify(cartItem));
+    } 
+    // Sinon elle récupère le tableau du sessionStorage, ajoute le nouveau produit, et enregistre le nouveau tableau.
+    else { 
+        cartItem = JSON.parse(sessionStorage.getItem('anyItem'));
 
         cartItem.forEach((prod) => {
             if (item._id === prod._id && item.selectColors === prod.selectColors) {
@@ -84,7 +83,7 @@ function addItemCart (item) {
             }
         })
     if (otherItem) cartItem.push(saveItemCart);
-    localStorage.setItem('cartProducts', JSON.stringify(cartItem));
+    sessionStorage.setItem('anyItem', JSON.stringify(cartItem));
 }
 
 itemConfirmation();
