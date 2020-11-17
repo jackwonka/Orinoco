@@ -1,5 +1,4 @@
-/*:::::::::::::::::::::::::::::::::::::::: Page index ::::::::::::::::::::::::::::::::::::::::*/
-/*---------- Corps ----------*/
+/*==================== Contenu principal 4 pages html ====================*/
 * {
   font-family: 'karmaGeorgia, serif, sans-serif';
   margin: 0;
@@ -8,7 +7,6 @@
 header {
   display: flex;
   justify-content: space-around;
-  padding: 3%;
   background-color: #f3e9f1; }
   header img {
     border-radius: 8px; }
@@ -24,59 +22,71 @@ header {
         header nav .icon__description i {
           margin-left: 10px; }
 
-/*---------- Contenu principal ----------*/
-main {
-  background: linear-gradient(to bottom right, #ca7b4dd2, #915cf3ce, #5c78f3ce); }
-  main h1, main p, main h2 {
-    padding: 20px;
-    display: flex;
-    justify-content: center; }
+a {
+  text-decoration: none;
+  color: black; }
 
-/*---------- Articles ----------*/
-#bear {
-  width: 70%;
-  margin: auto;
-  padding: 40px 0 40px 0; }
-  #bear .item {
-    background-color: #dac6ffce;
-    border-radius: 5px;
-    box-shadow: 0px 0px 12px 2px #c4c5c5;
-    list-style: none;
-    margin: 100px; }
-    #bear .item .row {
-      display: flex;
-      justify-content: center; }
+main h1, main p, main h2 {
+  padding: 20px;
+  display: flex;
+  justify-content: center; }
 
-/*---------- Pied de page ----------*/
 footer {
   display: flex;
   justify-content: space-around;
-  padding: 3%;
+  padding: 2%;
   background-color: #f3e9f1;
   width: 100%;
   height: auto; }
-  footer a {
-    color: black; }
 
-#item__details {
-  width: 70%;
+/*==================== Page index ====================*/
+/*---------- Articles ----------*/
+.item {
+  width: 45%;
   margin: auto;
-  padding: 40px 0 40px 0;
-  background-color: #dac6ffce;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+  background: linear-gradient(to bottom right, #ca7b4dd2, #915cf3ce, #5c78f3ce);
   border-radius: 5px;
-  box-shadow: 0px 0px 12px 2px #c4c5c5; }
+  box-shadow: 0px 0px 25px 0px #000000;
+  list-style: none; }
+  .item .row {
+    display: flex;
+    justify-content: center; }
 
-table {
+/*==================== Page produit ====================*/
+/*---------- Articles ----------*/
+#item__details {
+  width: 45%;
+  margin: auto;
+  background: linear-gradient(to bottom right, #ca7b4dd2, #915cf3ce, #5c78f3ce);
+  padding-bottom: 40px;
+  margin-bottom: 50px;
   margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center; }
+  border-radius: 5px;
+  box-shadow: 0px 0px 25px 0px #000000; }
+  #item__details h3 {
+    background-color: #f3e9f1;
+    margin: 10px 315px 10px 315px;
+    border-radius: 10px;
+    padding: 10px; }
+
+/*==================== Page panier ====================*/
+#item__select {
+  width: 45%;
+  margin: auto;
+  background: linear-gradient(to bottom right, #ca7b4dd2, #915cf3ce, #5c78f3ce);
+  padding-bottom: 40px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 25px 0px #000000; }
 
 .details__form {
+  width: 60%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 40%;
   margin: 20px auto 0 auto;
   padding-bottom: 80px;
   text-align: center;
@@ -85,27 +95,17 @@ table {
   box-shadow: 0px 0px 12px 2px #c4c5c5;
   border-radius: 10px; }
 
-body {
-  overflow-x: hidden; }
+table {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  table thead {
+    margin-left: 30px; }
+    table thead tr {
+      margin-left: 30px; }
 
-.item__number {
-  display: inline-block;
-  border-radius: 5rem;
-  position: relative;
-  top: 0px;
-  left: 5px;
-  right: 0px;
-  height: 20px;
-  font-size: 1rem;
-  text-align: center; }
-
-.product__price {
-  color: #a1180e;
-  margin-bottom: 10px; }
-
-#item__select {
-  background: linear-gradient(to bottom right, #ca7b4dd2, #915cf3ce, #5c78f3ce);
-  border-radius: 2rem;
-  box-shadow: 0px 6px 6px black;
-  margin: 130px 300px 100px 300px;
-  padding: 50px; }
+/*----------Responsive-Menu-1024px----------*/
+/*----------Responsive-Menu-800px----------*/
+/*----------Responsive-Menu-745px----------*/
+/*----------Responsive-Menu-450px----------*/

@@ -9,7 +9,7 @@ function displayQuantity() {
 
     if (sessionStorage.getItem('anyItem') !== null) {
 
-        let products = JSON.parse(sessionStorage.getItem('anyItem'));
+        let items = JSON.parse(sessionStorage.getItem('anyItem'));
         total = 0; //initialisation du total à 0
 
         boxSection.insertAdjacentHTML("afterbegin",
@@ -31,12 +31,12 @@ function displayQuantity() {
         
         let html = "";
         // Affichage des articles + prix + quantité
-        products.forEach( (product, index) => {
+        items.forEach( (product, index) => {
             
             total = total + (product.price * product.quantity);
 
             html +=`<tr>
-                        <td><img src="${product.imageUrl}" alt="ours peluche" style="width:120px;"></td>
+                        <td><img src="${product.imageUrl}" alt="ours peluche" style="width:80px;"></td>
                         <td>${product.name}</td>
                         <td>${product.selectColors}</td>
                         <td><button class="decrease__item ${index}"> - </button>
@@ -62,7 +62,7 @@ function displayQuantity() {
             `<h2>Veuillez remplir le formulaire ci-dessous avant de valider votre commande</h2>
                 <form class="contact__form" action="post" type="submit">
                     <div class="details__form">
-                        <label for="firstname">PRENOM:</label>
+                        <label for="firstname"></label>
                         <input type="text" name="name" id="firstname" placeholder="Prénom" required />
                     </div>
                     <div class="details__form">
@@ -92,7 +92,7 @@ function displayQuantity() {
         decreaseItem.forEach((btn) => {
 
             btn.addEventListener('click', e => {
-            removeOneProduct(e, products);
+            removeOneItem(e, items);
             })
         })
 
@@ -100,7 +100,7 @@ function displayQuantity() {
         increaseItem.forEach((btn) => {
 
             btn.addEventListener('click', e => {
-            addOneProduct(e, products);
+            addOneItem(e, items);
             })
         })
         
@@ -108,19 +108,19 @@ function displayQuantity() {
         deleteItem.forEach((btn) => {
 
             btn.addEventListener('click', e => {
-            deleteProduct(e, products);
+            deleteItemSelect(e, items);
             });
         });
 
         const cancelOrdered = document.querySelector(".cancel__ordered");
         cancelOrdered.addEventListener('click', () => {
-            cancelCart();
+            cancelMyOrdered();
         });
       
         const form = document.querySelector(".contact__form");
         form.addEventListener('submit', e => {
             e.preventDefault();
-            submitForm();
+            sendform();
         });
         //Panier vide
     } else {
@@ -136,10 +136,127 @@ function displayQuantity() {
 // =====================================================================================
 
 // Ajoute "1" d'un article
-function addOneProduct(e, products) {
+function addOneItem(e, items) {
     let index = e.target.classList[1].slice(-1);
-    products[index].quantity++;
-    sessionStorage.setItem('anyItem', JSON.stringify(products));
-    updateNumberOfArticles();
+    items[index].quantity++;
+    sessionStorage.setItem('anyItem', JSON.stringify(items));
+    updateNumberArticles();
 }
 
+// =====================================================================================
+
+// Enlève "1" d'un article, en arrivant à zéro il est supprimé
+function removeOneItem(e, items) {
+    let index = e.target.classList[1].slice(-1);
+    items[index].quantity--;
+    
+    if (items[index].quantity <= 0) {
+        items.splice(index, 1);       
+        if (items.length === 0 ) {
+            sessionStorage.removeItem('anyItem');
+        } else {
+            sessionStorage.setItem('anyItem', JSON.stringify(items));
+        }
+    } else {
+        sessionStorage.setItem('anyItem', JSON.stringify(items));
+    }
+    updateNumberArticles();
+}
+
+// =====================================================================================
+ 
+//Supprime l'article sélectionné.
+//Récupère l'index de l'article correspondant avec le caractère du nom de la classe. 
+//Supprime le bon article dans le tableau "items" du sessionStorage
+function deleteItemSelect(e, items) {
+    let index = e.target.classList[1].slice(-1);
+    items.splice(index, 1);
+    sessionStorage.setItem('anyItem', JSON.stringify(items));
+
+    if (items.length === 0) {
+        sessionStorage.removeItem('anyItem');
+    }
+    updateNumberArticles();
+}
+
+// =====================================================================================
+
+//Annulation tout le panier
+function cancelMyOrdered() {
+    sessionStorage.removeItem('anyItem');
+    updateNumberArticles();
+}
+
+// =====================================================================================
+
+//Réinitialise la section "item__select" et le nombre d'article dans le panier
+function updateNumberArticles() {
+    boxSection.innerHTML = "";
+    displayQuantity();
+    itemConfirmation();
+}
+
+// =====================================================================================
+
+//Récupère les valeurs de l'input dans contact__form
+//Récupère les id des produits du panier dans le tableau products
+//L'objet contact et le tableau products sont envoyé dans la function postOrder
+function sendform() {
+
+    let contact = {
+        firstName: document.getElementById("firstname").value,
+        lastName: document.getElementById("name").value,
+        address: document.getElementById("address").value,
+        city: document.getElementById("city").value,
+        email: document.getElementById("email").value
+    };
+
+    let products = [];
+    if (sessionStorage.getItem('anyItem') !== null) {
+        let productTab = JSON.parse(sessionStorage.getItem('anyItem'));
+        
+        productTab.forEach( p => {
+            products.push(p._id);
+        })
+    }
+
+    let contactItems = JSON.stringify({
+        contact, products
+    })
+
+    postOrder(contactItems);
+};
+
+// =====================================================================================
+
+//Requête POST, envoi au serveur "contact" et le tableau d'id "products"
+//Enregistre l'objet "contact" et Id, le total de la commande sur le sessionStorage.
+//Envoie page "confirmation"
+function postOrder(contactItems) {
+
+    fetch("http://localhost:3000/api/teddies/order", {
+        
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        mode:'cors',
+        body: contactItems
+    }).then(response => {
+
+        return response.json();
+
+    }).then( r => {
+
+        sessionStorage.setItem('contact', JSON.stringify(r.contact));
+        sessionStorage.setItem('orderId', JSON.stringify(r.orderId));
+        sessionStorage.setItem('total', JSON.stringify(total));
+        sessionStorage.removeItem('anyItem');
+        window.location.replace("./confirmation.html");
+
+    })
+    .catch((e) => {
+        displayError();
+        console.log(e);
+    })
+}

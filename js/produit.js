@@ -11,18 +11,18 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
     let html="";
 
     // Affichage du produit / personalisation
-    html += `<h1>${response.name}</h1>
-        <img src="${response.imageUrl}" alt="image d'ours en détails" style="width:50%; border-radius:5px;">
-        <p>${response.description}</p>
-        <p>Prix: ${(response.price/100).toFixed(2).replace(".",",")}€</p>
+    html += `<h1 class="row">${response.name}</h1>
+        <p class="row"><img src="${response.imageUrl}" alt="image d'ours en détails" style="width:40rem; border-radius:5px;"></p>
+        <p class="row">${response.description}</p>
+        <p class="row"><b>Prix: ${(response.price/100).toFixed(2).replace(".",",")}€</b></p>
         <!-- Personalisation de la couleur -->
         <label for="select__color">
             <h3>Personnaliser votre ours</h3>
         </label>
-            <select class="section__choice" name="colors" id="select__color">
+            <select class="section__choice" name="colors" id="select__color" style="margin-left:315px;">
             <!-- Mes choix de couleurs dans la function forEach --!>
             </select>
-        <button class="addCart" style="padding:15px; border-radius:10px;">Ajouter au panier <i class="fas fa-cart-arrow-down"></i></button>`
+        <button class="addCart" style="border:0; background-color:#f3e9f1; padding:12px; border-radius:15px; box-shadow: 0px 0px 8px 0px white; margin-left:5px;"><b>Ajouter au panier</b><i class="fas fa-cart-arrow-down"></i></button>`
     document.getElementById("item__details").innerHTML = html;
     
     //Création d'une function foreach pour afficher mes choix de couleurs
@@ -57,7 +57,7 @@ function addItemCart (item) {
     // variable tableaux
     let cartItem = []
 
-    // stocke dans un objet
+    // stockage dans un objet
     let saveItemCart = {
         _id: item._id,
         imageUrl: item.imageUrl,
