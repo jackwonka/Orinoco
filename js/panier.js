@@ -20,7 +20,7 @@ function displayQuantity() {
                         <th>Articles</th>              
                         <th>Nom</th>
                         <th>Couleurs</th>
-                        <th>Nombre d'articles</th>
+                        <th>Nombre<br>d'articles</th>
                         <th>Prix</th>
                     </tr>
                 </thead>
@@ -36,52 +36,52 @@ function displayQuantity() {
             total = total + (product.price * product.quantity);
 
             html +=`<tr>
-                        <td><img src="${product.imageUrl}" alt="ours peluche" style="width:80px;"></td>
+                        <td><img src="${product.imageUrl}" alt="ours peluche" style="width:100px;"></td>
                         <td>${product.name}</td>
                         <td>${product.selectColors}</td>
-                        <td><button class="decrease__item ${index}"> - </button>
+                        <td style="padding-left:50px;"><button class="decrease__item ${index}" style=" background-color:white; padding:0 5px 0 5px;"> - </button>
                         ${product.quantity}
-                        <button class="increase__item ${index}"> + </button></td>
-                        <td>${(product.price * product.quantity/100).toFixed(2).replace(".",",")} €</td>
-                        <td><button class="delete__item ${index}">Supprimer</button></td>
+                        <button class="increase__item ${index}" style="background-color:white; padding:0 5px 0 5px;"> + </button></td>
+                        <td style="padding-left:50px;">${(product.price * product.quantity/100).toFixed(2).replace(".",",")}€</td>
+                        <td><button class="delete__item ${index}" style="background-color:white; padding:0 5px 0 5px;">Supprimer</button></td>
                     </tr>`
             document.querySelector(".order__details").innerHTML = html;
         })
 
         //Total prix + boutton annuler commande    
         boxSection.insertAdjacentHTML("beforeend",
-            `<div class="total">
-                <p class="cart-section__total">Total : ${(total/100).toFixed(2).replace(".",",")} €</p>
-                <button class="cancel__ordered">
+            `<div class="total" style="margin-left:5%;">
+                <p class="cart-section" style="margin-right:5%;"><b>Total: ${(total/100).toFixed(2).replace(".",",")}€</b></p>
+                <button class="cancel__ordered" style="border:0; background-color:#f3e9f1; border-radius:15px;          box-shadow: 0px 0px 8px 0px white; margin-left:5px;">
                     <p>Annuler le panier</p>
                 </button>
             </div>`
         );
         // Formulaire
         boxSection.insertAdjacentHTML("beforeend",
-            `<h2>Veuillez remplir le formulaire ci-dessous avant de valider votre commande</h2>
+            `<h2 style="margin-top:30px;">Veuillez remplir le formulaire ci-dessous avant de valider votre commande</h2>
                 <form class="contact__form" action="post" type="submit">
                     <div class="details__form">
-                        <label for="firstname"></label>
-                        <input type="text" name="name" id="firstname" placeholder="Prénom" required />
+                        <label for="firstname">Prénom</label>
+                        <input type="text" name="name" id="firstname" placeholder="Jack" required />
                     </div>
                     <div class="details__form">
                         <label for="name">NOM:</label>
-                        <input type="text" name="name" id="name" placeholder="Prénom" required />
+                        <input type="text" name="name" id="name" placeholder="Wonka" required />
                     </div>
                     <div class="details__form">
                         <label for="address">ADRESSE:</label>
-                        <input type="text" name="address" id="address" placeholder="Adresse" required />
+                        <input type="text" name="address" id="address" placeholder="33 rue des îles" required />
                     </div>
                     <div class="details__form">
                         <label for="city">VILLE:</label>
-                        <input type="text" name="city" id="city" placeholder="Ville" required />
+                        <input type="text" name="city" id="city" placeholder="Monteville" required />
                     </div>
                     <div class="details__form">
                         <label for="email">EMAIL: </label>
                         <input type="email" name="email" id="email" placeholder="adressemail@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+[.][a-z]{2,4}" required />
                     </div>
-                    <button id="submit">
+                    <button class="validate" id="submit" style="border:0; background-color:#f3e9f1; border-radius:15px;  box-shadow: 0px 0px 8px 0px white; margin: 30px 0 0 40%;">
                         <p>Valider vôtre commande</p>
                     </button>
                 </form>`
@@ -126,7 +126,7 @@ function displayQuantity() {
     } else {
         boxSection.insertAdjacentHTML("afterbegin",
             `<h2>Panier</h2>
-            <p class="cart-section__vide">
+            <p class="cart-section">
                 Vous n'avez aucun article! <a href="./index.html">Revenir à la page d'accueil</a>
             </p>`
         )

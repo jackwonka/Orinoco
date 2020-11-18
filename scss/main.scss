@@ -31,6 +31,10 @@ header {
     }
 }
 
+body {
+  overflow-x:hidden;
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -93,6 +97,8 @@ footer {
 }
 /*==================== Page panier ====================*/
 
+/*---------- Contenue ----------*/
+
 #item__select {
   width: 45%;
   margin: auto;
@@ -103,6 +109,26 @@ footer {
   border-radius: 5px;
   box-shadow: 0px 0px 25px 0px #000000;
 }
+/*---------- Détail articles tableaux ----------*/
+
+table {
+  margin-top:50px; 
+  display:flex; 
+  flex-direction:column; 
+  align-items:center;
+  th {
+    padding: 0 50px 0 30px;
+  }
+    td {
+      padding: 20px 20px 0 20px;
+      
+    }
+}
+thead {
+  margin: 0 110px 0 20px;
+}
+
+/*---------- Formulaire ----------*/
 
 .details__form {
   width: 60%;
@@ -117,20 +143,26 @@ footer {
   box-shadow: 0px 0px 12px 2px #c4c5c5;
   border-radius: 10px;
 }
-
-table {
-  margin-top:50px; 
-  display:flex; 
-  flex-direction:column; 
-  align-items:center;
-    thead {
-      margin-left: 30px;
-        tr {
-          margin-left: 30px;
-        }
-    }
-}
 // ====================================================
+
+
+.item__number
+{
+  display: inline-block;
+  border-radius: 5rem;
+  position: relative;
+  top: 0px;
+  left: 5px;
+  right: 0px;
+  height: 20px;
+  font-size: 1rem;
+  text-align: center;
+  
+}
+
+
+
+
 
 /*----------Responsive-Menu-1024px----------*/
 
