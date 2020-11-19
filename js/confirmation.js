@@ -5,17 +5,17 @@ const total = JSON.parse(sessionStorage.getItem('total'));
 let html ="";
 
 html +=`
-    <h2>Confirmation de la commande : </h2>
+    <h2>Confirmation de la commande</h2>
     <ul>
-        <li>Vos coordonnées : </li>
-        <li>Nom : ${contact.lastName}</li>
-        <li>Prénom : ${contact.firstName}</li>
-        <li>Adresse : ${contact.address}</li>
-        <li>Ville : ${contact.city}</li>
-        <li>Email : ${contact.email}</li>
+        <li class="puce">Vos coordonnées</li>
+        <li class="puce">Nom: ${contact.lastName}</li>
+        <li class="puce">Prénom: ${contact.firstName}</li>
+        <li class="puce">Adresse: ${contact.address}</li>
+        <li class="puce">Ville: ${contact.city}</li>
+        <li class="puce">Email: ${contact.email}</li>
     </ul>
-    <h3>Total : ${(total/100).toFixed(2).replace(".",",")} €</h3>
-    <h3>Numéro de la commande : </br> ${orderId}</h3>`
+    <h3>Total: ${(total/100).toFixed(2).replace(".",",")} €</h3>
+    <h3>Numéro de la commande: </br> ${orderId}</h3>`
     document.getElementById("order__confirmed").innerHTML = html;
 
 sessionStorage.removeItem('contact');

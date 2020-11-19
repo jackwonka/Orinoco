@@ -52,7 +52,7 @@ function displayQuantity() {
         boxSection.insertAdjacentHTML("beforeend",
             `<div class="total" style="margin-left:5%;">
                 <p class="cart-section" style="margin-right:5%;"><b>Total: ${(total/100).toFixed(2).replace(".",",")}€</b></p>
-                <button class="cancel__ordered" style="border:0; background-color:#f3e9f1; border-radius:15px;          box-shadow: 0px 0px 8px 0px white; margin-left:5px;">
+                <button class="cancel__ordered" style="border:0; background-color:#f3e9f1; border-radius:15px;          box-shadow: 0px 0px 8px 0px white; margin-left:5%;">
                     <p>Annuler le panier</p>
                 </button>
             </div>`
@@ -62,23 +62,23 @@ function displayQuantity() {
             `<h2 style="margin-top:30px;">Veuillez remplir le formulaire ci-dessous avant de valider votre commande</h2>
                 <form class="contact__form" action="post" type="submit">
                     <div class="details__form">
-                        <label for="firstname">Prénom</label>
+                        <label for="firstname">PRENOM</label>
                         <input type="text" name="name" id="firstname" placeholder="Jack" required />
                     </div>
                     <div class="details__form">
-                        <label for="name">NOM:</label>
+                        <label for="name">NOM</label>
                         <input type="text" name="name" id="name" placeholder="Wonka" required />
                     </div>
                     <div class="details__form">
-                        <label for="address">ADRESSE:</label>
+                        <label for="address">ADRESSE</label>
                         <input type="text" name="address" id="address" placeholder="33 rue des îles" required />
                     </div>
                     <div class="details__form">
-                        <label for="city">VILLE:</label>
+                        <label for="city">VILLE</label>
                         <input type="text" name="city" id="city" placeholder="Monteville" required />
                     </div>
                     <div class="details__form">
-                        <label for="email">EMAIL: </label>
+                        <label for="email">EMAIL</label>
                         <input type="email" name="email" id="email" placeholder="adressemail@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+[.][a-z]{2,4}" required />
                     </div>
                     <button class="validate" id="submit" style="border:0; background-color:#f3e9f1; border-radius:15px;  box-shadow: 0px 0px 8px 0px white; margin: 30px 0 0 40%;">
@@ -126,8 +126,8 @@ function displayQuantity() {
     } else {
         boxSection.insertAdjacentHTML("afterbegin",
             `<h2>Panier</h2>
-            <p class="cart-section">
-                Vous n'avez aucun article! <a href="./index.html">Revenir à la page d'accueil</a>
+            <p class="cart-section" style="font-size:25px;">
+                Vous n'avez aucun article!<a href="./index.html"><b>Revenir à la page d'accueil</b></a>
             </p>`
         )
     }
