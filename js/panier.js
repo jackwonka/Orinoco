@@ -36,13 +36,13 @@ function displayQuantity() {
             total = total + (product.price * product.quantity);
 
             html +=`<tr>
-                        <td><img src="${product.imageUrl}" alt="ours peluche" style="width:100px;"></td>
-                        <td>${product.name}</td>
-                        <td>${product.selectColors}</td>
-                        <td style="padding-left:50px;"><button class="decrease__item ${index}" style=" background-color:white; padding:0 5px 0 5px;"> - </button>
+                        <td class="old"><img src="${product.imageUrl}" alt="ours peluche" style="width:100px;"></td>
+                        <td class="old">${product.name}</td>
+                        <td class="old">${product.selectColors}</td>
+                        <td class="old" style="padding-left:50px;"><button class="decrease__item ${index}" style=" background-color:white; padding:0 5px 0 5px;"> - </button>
                         ${product.quantity}
                         <button class="increase__item ${index}" style="background-color:white; padding:0 5px 0 5px;"> + </button></td>
-                        <td style="padding-left:50px;">${(product.price * product.quantity/100).toFixed(2).replace(".",",")}€</td>
+                        <td class="old" style="padding-left:50px;">${(product.price * product.quantity/100).toFixed(2).replace(".",",")}€</td>
                         <td><button class="delete__item ${index}" style="background-color:white; padding:0 5px 0 5px;">Supprimer</button></td>
                     </tr>`
             document.querySelector(".order__details").innerHTML = html;
@@ -63,25 +63,25 @@ function displayQuantity() {
                 <form class="contact__form" action="post" type="submit">
                     <div class="details__form">
                         <label for="firstname">PRENOM</label>
-                        <input type="text" name="name" id="firstname" placeholder="Jack" required />
+                        <input type="text" name="firstname" id="firstname" placeholder="Julien" maxlength="30" pattern="[A-Za-z]{2,}" required />
                     </div>
                     <div class="details__form">
                         <label for="name">NOM</label>
-                        <input type="text" name="name" id="name" placeholder="Wonka" required />
+                        <input type="text" name="name" id="name" placeholder="Lemaire" maxlength="30" pattern="[A-Za-z]{2,}" required />
                     </div>
                     <div class="details__form">
                         <label for="address">ADRESSE</label>
-                        <input type="text" name="address" id="address" placeholder="33 rue des îles" required />
+                        <input type="text" name="address" id="address" placeholder="33 rue Lefort" maxlength="100" required />
                     </div>
                     <div class="details__form">
                         <label for="city">VILLE</label>
-                        <input type="text" name="city" id="city" placeholder="Monteville" required />
+                        <input type="text" name="city" id="city" placeholder="Monteville" maxlength="50" pattern="[A-Za-z]{2,}" required />
                     </div>
                     <div class="details__form">
                         <label for="email">EMAIL</label>
-                        <input type="email" name="email" id="email" placeholder="adressemail@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+[.][a-z]{2,4}" required />
+                        <input type="email" name="email" id="email" placeholder="Veulliez entrer une adresse valide: adressemail@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+[.][a-z]{2,4}" required />
                     </div>
-                    <button class="validate" id="submit" style="border:0; background-color:#f3e9f1; border-radius:15px;  box-shadow: 0px 0px 8px 0px white; margin: 30px 0 0 40%;">
+                    <button class="validate" id="submit" style="border:0; background-color:#f3e9f1; border-radius:15px;  box-shadow: 0px 0px 8px 0px white; margin: 30px 0 0 45%;">
                         <p>Valider vôtre commande</p>
                     </button>
                 </form>`
@@ -116,12 +116,14 @@ function displayQuantity() {
         cancelOrdered.addEventListener('click', () => {
             cancelMyOrdered();
         });
-      
+
+        //validation formulaire
         const form = document.querySelector(".contact__form");
         form.addEventListener('submit', e => {
             e.preventDefault();
             sendform();
         });
+
         //Panier vide
     } else {
         boxSection.insertAdjacentHTML("afterbegin",
@@ -226,7 +228,23 @@ function sendform() {
 
     postOrder(contactItems);
 };
+// document.getElementById('submit').addEventListener('click' , (e) => {
+//     e.preventDefault()
 
+//     //Récupérer mes valeur de form
+//     let firstname = document.getElementById('firstname').value
+//     let name = document.getElementById('name').value
+//     let adress = document.getElementById('adress').value
+//     let city = document.getElementById('city').value
+//     let email = document.getElementById('email').value
+
+//     //Vérifier mes champs
+
+
+//     //Si tout est ok, envoyer le formulaire
+
+//     // document.forms["myform"].submit();
+// })
 // =====================================================================================
 
 //Requête POST, envoi au serveur "contact" et le tableau d'id "products"

@@ -89,10 +89,12 @@ footer {
   border-radius: 5px;
   box-shadow: 0px 0px 25px 0px #000000;
     h3 {
-      background-color: #f3e9f1;
       margin: 10px 30% 10px 30%;
       border-radius: 10px;
       padding: 10px;
+    }
+    .section__choice {
+      width: 20%;
     }
 }
 /*==================== Page panier ====================*/
@@ -100,7 +102,7 @@ footer {
 /*---------- Contenue ----------*/
 
 #item__select {
-  width: 45%;
+  width: 90%;
   margin: auto;
   background: linear-gradient(to bottom right, #ca7b4dd2,#915cf3ce,#5c78f3ce);
   padding-bottom: 40px;
@@ -174,26 +176,18 @@ thead {
       height: 280px;
     }
   }
-  th {
-    padding-left: 10px;
-    padding-right: 10px;
-    text-align: start;
-  }
-  td {
-    padding-left:0px;
-    padding-right: 0px;
-    text-align: start;
-  }
-
-}
-/*----------Responsive-Menu-800px----------*/
-
-@media screen and (max-width: 800px) {
-  
 }
 /*----------Responsive-Menu-745px----------*/
 
 @media screen and (max-width: 780px) {
+  th {
+    visibility: hidden;
+    
+  }
+  td {
+      display: flex;
+      flex-direction: column;
+  }
   .item{
     img {
       height: 240px;
@@ -223,11 +217,14 @@ thead {
   .component {
     text-align: center;
     font-size: 15px;
-}
+  }
   .item{
     img {
       height: 130px;
     }
+  }
+  .addCart {
+    font-size: 10px;
   }
 }
 
