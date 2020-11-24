@@ -63,15 +63,15 @@ function displayQuantity() {
                 <form class="contact__form" action="post" type="submit">
                     <div class="details__form">
                         <label for="firstname">PRENOM</label>
-                        <input type="text" name="firstname" id="firstname" placeholder="Julien" maxlength="30" pattern="[A-Za-z]{2,}" required />
+                        <input type="text" name="firstname" id="firstname" placeholder="Julien" maxlength="25" pattern="[A-Za-z]{2,}" required />
                     </div>
                     <div class="details__form">
                         <label for="name">NOM</label>
-                        <input type="text" name="name" id="name" placeholder="Lemaire" maxlength="30" pattern="[A-Za-z]{2,}" required />
+                        <input type="text" name="name" id="name" placeholder="Lemaire" maxlength="25" pattern="[A-Za-z]{2,}" required />
                     </div>
                     <div class="details__form">
                         <label for="address">ADRESSE</label>
-                        <input type="text" name="address" id="address" placeholder="33 rue Lefort" maxlength="100" required />
+                        <input type="text" name="address" id="address" placeholder="33 rue Lefort" maxlength="50" required />
                     </div>
                     <div class="details__form">
                         <label for="city">VILLE</label>
@@ -87,7 +87,7 @@ function displayQuantity() {
                 </form>`
         );
 
-        // L'ecoute des bouttons + - supprimer annuler formulaire
+        // L'ecoute du boutton -
         const decreaseItem = document.querySelectorAll(".decrease__item ");
         decreaseItem.forEach((btn) => {
 
@@ -95,7 +95,7 @@ function displayQuantity() {
             removeOneItem(e, items);
             })
         })
-
+        // L'ecoute des bouttons +
         const increaseItem = document.querySelectorAll(".increase__item");
         increaseItem.forEach((btn) => {
 
@@ -103,7 +103,7 @@ function displayQuantity() {
             addOneItem(e, items);
             })
         })
-        
+        //supprimer
         const deleteItem = document.querySelectorAll(".delete__item");
         deleteItem.forEach((btn) => {
 
@@ -111,7 +111,7 @@ function displayQuantity() {
             deleteItemSelect(e, items);
             });
         });
-
+        //annuler
         const cancelOrdered = document.querySelector(".cancel__ordered");
         cancelOrdered.addEventListener('click', () => {
             cancelMyOrdered();
@@ -124,7 +124,7 @@ function displayQuantity() {
             sendform();
         });
 
-        //Panier vide
+        //Sinon, Panier vide
     } else {
         boxSection.insertAdjacentHTML("afterbegin",
             `<h2>Panier</h2>
@@ -204,7 +204,6 @@ function updateNumberArticles() {
 //Récupère les id des produits du panier dans le tableau products
 //L'objet contact et le tableau products sont envoyé dans la function postOrder
 function sendform() {
-
     let contact = {
         firstName: document.getElementById("firstname").value,
         lastName: document.getElementById("name").value,
@@ -214,37 +213,21 @@ function sendform() {
     };
 
     let products = [];
-    if (sessionStorage.getItem('anyItem') !== null) {
-        let productTab = JSON.parse(sessionStorage.getItem('anyItem'));
-        
-        productTab.forEach( p => {
-            products.push(p._id);
-        })
+    if (contact.value == "") {
+        e.preventDefault();
     }
-
+    // if (sessionStorage.getItem('anyItem') !== null) {
+    //     let productTab = JSON.parse(sessionStorage.getItem('anyItem'));
+        
+    //     productTab.forEach( p => {
+    //         products.push(p._id);
+    //     })
+    // }
     let contactItems = JSON.stringify({
         contact, products
     })
-
     postOrder(contactItems);
 };
-// document.getElementById('submit').addEventListener('click' , (e) => {
-//     e.preventDefault()
-
-//     //Récupérer mes valeur de form
-//     let firstname = document.getElementById('firstname').value
-//     let name = document.getElementById('name').value
-//     let adress = document.getElementById('adress').value
-//     let city = document.getElementById('city').value
-//     let email = document.getElementById('email').value
-
-//     //Vérifier mes champs
-
-
-//     //Si tout est ok, envoyer le formulaire
-
-//     // document.forms["myform"].submit();
-// })
 // =====================================================================================
 
 //Requête POST, envoi au serveur "contact" et le tableau d'id "products"
@@ -253,7 +236,6 @@ function sendform() {
 function postOrder(contactItems) {
 
     fetch("http://localhost:3000/api/teddies/order", {
-        
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -265,13 +247,11 @@ function postOrder(contactItems) {
         return response.json();
 
     }).then( r => {
-
         sessionStorage.setItem('contact', JSON.stringify(r.contact));
         sessionStorage.setItem('orderId', JSON.stringify(r.orderId));
         sessionStorage.setItem('total', JSON.stringify(total));
         sessionStorage.removeItem('anyItem');
         window.location.replace("./confirmation.html");
-
     })
     .catch((e) => {
         displayError();

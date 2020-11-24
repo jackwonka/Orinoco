@@ -24,6 +24,6 @@ function errorMessage() {
 
     let html = "";
    
-    html += `<p class="section__error">Nous ne parvenons pas à vous connecter, vérifiez votre réseau et reessayer"</p>`
+    html += `<p class="section__error" style=" font-size:30px;"><b>"Nous ne parvenons pas à vous connecter, vérifiez votre réseau et reessayer"<b></p>`
     document.querySelector(".error").innerHTML = html;
 }
