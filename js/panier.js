@@ -63,11 +63,11 @@ function displayQuantity() {
                 <form class="contact__form" action="post" type="submit">
                     <div class="details__form">
                         <label for="firstname">PRENOM</label>
-                        <input type="text" name="firstname" id="firstname" placeholder="Julien" maxlength="25" pattern="[A-Za-z]{2,}" required />
+                        <input type="text" name="firstname" id="firstname" placeholder="Julien" maxlength="25" pattern="[a-zA-ZÀ-ÿ]{2,}" required />
                     </div>
                     <div class="details__form">
                         <label for="name">NOM</label>
-                        <input type="text" name="name" id="name" placeholder="Lemaire" maxlength="25" pattern="[A-Za-z]{2,}" required />
+                        <input type="text" name="name" id="name" placeholder="Lemaire" maxlength="25" pattern="[a-zA-ZÀ-ÿ]{2,}" required />
                     </div>
                     <div class="details__form">
                         <label for="address">ADRESSE</label>
@@ -213,16 +213,14 @@ function sendform() {
     };
 
     let products = [];
-    if (contact.value == "") {
-        e.preventDefault();
-    }
-    // if (sessionStorage.getItem('anyItem') !== null) {
-    //     let productTab = JSON.parse(sessionStorage.getItem('anyItem'));
+    if (sessionStorage.getItem('anyItem') !== null) {
+        let productTab = JSON.parse(sessionStorage.getItem('anyItem'));
         
-    //     productTab.forEach( p => {
-    //         products.push(p._id);
-    //     })
-    // }
+        productTab.forEach( p => {
+            products.push(p._id);
+        })
+    }
+    
     let contactItems = JSON.stringify({
         contact, products
     })
