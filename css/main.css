@@ -1,9 +1,42 @@
 @charset "UTF-8";
-/*==================== Contenu principal 4 pages html ====================*/
-* {
-  font-family: 'karmaGeorgia, serif, sans-serif';
-  margin: 0;
-  padding: 0; }
+@font-face {
+  font-family: 'karma';
+  src: url("../fonts/karma.eot"), url("../fonts/karma.woff"), url("../fonts/karma.ttf"), url("../fonts/karma.svg"); }
+
+/*----------Responsive-Menu-1024px----------*/
+@media screen and (max-width: 1024px) {
+  .item {
+    width: 55%; }
+    .item img {
+      height: 280px; } }
+
+/*----------Responsive-Menu-745px----------*/
+@media screen and (max-width: 780px) {
+  th {
+    visibility: hidden; }
+  td {
+    display: flex;
+    flex-direction: column; }
+  .item img {
+    height: 240px; } }
+
+@media screen and (max-width: 660px) {
+  header ul {
+    display: flex;
+    flex-direction: column;
+    margin-top: -40px; }
+  .item img {
+    height: 200px; } }
+
+/*----------Responsive-Menu-450px----------*/
+@media screen and (max-width: 550px) {
+  .component {
+    text-align: center;
+    font-size: 15px; }
+  .item img {
+    height: 130px; }
+  .addCart {
+    font-size: 10px; } }
 
 header {
   display: flex;
@@ -23,6 +56,20 @@ header {
         header nav .icon__description i {
           margin-left: 10px; }
 
+footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f3e9f1;
+  width: 100%; }
+  footer a {
+    padding: 20px 0 20px 0; }
+
+/*==================== Contenu principal 4 pages html ====================*/
+* {
+  font-family: 'karmaGeorgia, serif, sans-serif';
+  margin: 0;
+  padding: 0; }
+
 body {
   overflow-x: hidden; }
 
@@ -34,14 +81,6 @@ main h1, main p, main h2, main h3, main .puce {
   padding: 20px;
   display: flex;
   justify-content: center; }
-
-footer {
-  display: flex;
-  justify-content: space-around;
-  background-color: #f3e9f1;
-  width: 100%; }
-  footer a {
-    padding: 20px 0 20px 0; }
 
 /*==================== Page index ====================*/
 /*---------- Articles ----------*/
@@ -131,39 +170,3 @@ thead {
 #order__confirmed {
   background: linear-gradient(to top right, #ca7b4dd2, #915cf3ce);
   height: 48rem; }
-
-/*==================== Responsive ====================*/
-/*----------Responsive-Menu-1024px----------*/
-@media screen and (max-width: 1024px) {
-  .item {
-    width: 55%; }
-    .item img {
-      height: 280px; } }
-
-/*----------Responsive-Menu-745px----------*/
-@media screen and (max-width: 780px) {
-  th {
-    visibility: hidden; }
-  td {
-    display: flex;
-    flex-direction: column; }
-  .item img {
-    height: 240px; } }
-
-@media screen and (max-width: 660px) {
-  header ul {
-    display: flex;
-    flex-direction: column;
-    margin-top: -40px; }
-  .item img {
-    height: 200px; } }
-
-/*----------Responsive-Menu-450px----------*/
-@media screen and (max-width: 550px) {
-  .component {
-    text-align: center;
-    font-size: 15px; }
-  .item img {
-    height: 130px; }
-  .addCart {
-    font-size: 10px; } }

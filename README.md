@@ -44,7 +44,7 @@ de code pour le front-end.
 Vous devrez formaliser un plan pour atteindre ce résultat, sans obligation d'écrire ces tets.
 Expliquez quelles lignes seront testées, et quels "test cases" seront envisagés.
 
-* INDORMATIONS COMPLEMENTAIRES *
+* INFORMATIONS COMPLEMENTAIRES *
 
 Pour le MVP, la personalisation du produit ne sera pas fonctionnelle: La page contenant
 un seul article aura un menu déroulant permettant à l'utilisateur de choisir une option
